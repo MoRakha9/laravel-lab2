@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
+use App\Http\Requests\StoreBlogPostRequest;
 
 class ArticleController extends Controller
 {
@@ -14,19 +15,13 @@ class ArticleController extends Controller
         return view('showArticle', ['article'=>$article, 'id'=>$id]);
     }
 
+    /* insert new article functions */
     public function insert($d){
         
         return view('insert',['d'=>$d]);
     }
 
-    public function updatePage($d, $id){
-        $id = (int)$id;
-        $data = Article::find($id);
-        return view('insert',['d'=>$d, 'id'=>$id, 'data'=>$data]);
-
-    }
-
-    public function save(Request $requist){
+    public function save(StoreBlogPostRequest $requist){
 
         $Article = new Article;
         $id;
@@ -45,6 +40,8 @@ class ArticleController extends Controller
         return redirect("/showArticle/{$id}");
     }
 
+        /* delete article function */
+
     public function delete($id,$C_id){
 
         $article = Article::where('id','=',$id)->get();
@@ -56,7 +53,16 @@ class ArticleController extends Controller
 
     }
 
-    public function update(Request $requist){
+        /* update article functions */
+
+    public function updatePage($d, $id){
+        $id = (int)$id;
+        $data = Article::find($id);
+        return view('insert',['d'=>$d, 'id'=>$id, 'data'=>$data]);
+
+    }
+
+    public function update(StoreBlogPostRequest $requist){
         $Article = Article::find($requist->id);
         $id;
         $category = category::all();

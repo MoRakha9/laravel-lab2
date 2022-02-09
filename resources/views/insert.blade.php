@@ -35,14 +35,17 @@
     <h3>Category</h3>
     <input type="text" name="name">
     <br>
+    <div style="color: red">@error('name'){{$message}} @enderror</div>
     <br>
     <h3>pic</h3>
     <input type="text" name="details">
     <br>
+    <div style="color: red">@error('details'){{$message}} @enderror</div>
     <br>
     <h3>slug</h3>
     <input type="text" name="slug">
     <br>
+    <div style="color: red">@error('slug'){{$message}} @enderror</div>
     <br>
 
     <button class="btn btn-primary">submit</button>
@@ -54,14 +57,17 @@
     <h3>Category</h3>
     <input type="text" name="name" value="{{$data['name']}}">
     <br>
+    <div style="color: red">@error('name'){{$message}} @enderror</div>
     <br>
     <h3>pic</h3>
     <input type="text" name="details" value="{{$data['details']}}">
     <br>
+    <div style="color: red">@error('details'){{$message}} @enderror</div>
     <br>
     <h3>slug</h3>
     <input type="text" name="slug" value="{{$data['slug']}}">
     <br>
+    <div style="color: red">@error('slug'){{$message}} @enderror</div>
     <br>
     <input type="hidden" name="id" value="{{$id}}">
 
